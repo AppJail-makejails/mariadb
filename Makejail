@@ -1,0 +1,12 @@
+INCLUDE options/options.makejail
+
+ARG mariadb_version=106
+
+RAW if ! echo "${mariadb_version}" | grep -qEe '^10[3-6]$'; then
+RAW 	echo "VALID VERSIONS: 103, 104, 105, 106"
+RAW 	exit 1
+RAW fi
+
+PKG mariadb${mariadb_version}-server
+SYSRC mysql_enable=YES
+SERVICE mysql-server start
