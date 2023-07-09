@@ -1,0 +1,10 @@
+INCLUDE options/options.makejail
+
+ARG mariadb_version=1011
+
+RAW if ! echo "${mariadb_version}" | grep -qEe '^10([5-6]|11)$'; then
+RAW 	echo "VALID VERSIONS: 105, 106, 1011"
+RAW 	exit 1
+RAW fi
+
+PKG mariadb${mariadb_version}-server

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+. /scripts/lib.sh
+
+ROOT_PASSWORD="$1"
+ROOT_HOST="$2"
+
+ESCAPE_ROOT_PASSWORD=`escape_name "${ROOT_PASSWORD}"`
+ESCAPE_ROOT_HOST=`escape_name "${ROOT_HOST}"`
+
+cat << EOF >> /scripts/mysqlrc
+CREATE USER IF NOT EXISTS 'root'@'${ESCAPE_ROOT_HOST}';
+ALTER USER 'root'@'${ESCAPE_ROOT_HOST}' IDENTIFIED BY '${ESCAPE_ROOT_PASSWORD}';
+GRANT ALL ON *.* TO 'root'@'${ESCAPE_ROOT_HOST}' WITH GRANT OPTION;
+EOF
