@@ -118,3 +118,7 @@ appjail image export mariadb
 | `13.1-1011` | `amd64` | `13.1-RELEASE` |
 | `13.1-106` | `amd64` | `13.1-RELEASE` |
 | `13.1-105` | `amd64` | `13.1-RELEASE` |
+
+## Notes
+
+1. The `mariadb_dump_all` custom stage uses `--ARE --single-transaction` flags. See the `mysqldump` / `mariadb-dump` documentation to see if these flags suit your environment and/or configuration.
