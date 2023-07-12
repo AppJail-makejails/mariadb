@@ -99,6 +99,7 @@ Remove unportable or unnecessary files and directories and export the jail:
 appjail stop mariadb
 appjail cmd local mariadb sh -c "rm -f var/log/*"
 appjail cmd local mariadb sh -c "rm -f var/cache/pkg/*"
+appjail cmd local mariadb sh -c "rm -f var/run/*"
 appjail cmd local mariadb vi etc/rc.conf
 appjail image export mariadb
 ```
