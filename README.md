@@ -110,14 +110,14 @@ appjail image export mariadb
 
 ## Tags
 
-| Tag         | Arch    | Version           | `mariadb_version` |
-| ----------- | ------- | ----------------- | ----------------- |
-| `13.2-1011` | `amd64` | `13.2-RELEASE-p1` |       1011        |
-| `13.2-106`  | `amd64` | `13.2-RELEASE-p1` |       106         |
-| `13.2-105`  | `amd64` | `13.2-RELEASE-p1` |       105         |
-| `13.1-1011` | `amd64` | `13.1-RELEASE-p8` |       1011        |
-| `13.1-106`  | `amd64` | `13.1-RELEASE-p8` |       106         |
-| `13.1-105`  | `amd64` | `13.1-RELEASE-p8` |       105         |
+| Tag         | Arch    | Version           | Type   | `mariadb_version` |
+| ----------- | ------- | ----------------- | ------ | ----------------- |
+| `13.2-1011` | `amd64` | `13.2-RELEASE-p1` | `thin` |       1011        |
+| `13.2-106`  | `amd64` | `13.2-RELEASE-p1` | `thin` |       106         |
+| `13.2-105`  | `amd64` | `13.2-RELEASE-p1` | `thin` |       105         |
+| `13.1-1011` | `amd64` | `13.1-RELEASE-p8` | `thin` |       1011        |
+| `13.1-106`  | `amd64` | `13.1-RELEASE-p8` | `thin` |       106         |
+| `13.1-105`  | `amd64` | `13.1-RELEASE-p8` | `thin` |       105         |
 
 ## Notes
 
