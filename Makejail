@@ -83,6 +83,7 @@ RAW elif [ -n "${mariadb_root_password}" ]; then
     CMD /scripts/root-password.sh "${mariadb_root_password}" "${mariadb_root_host}"
 RAW elif [ "${mariadb_random_root_password}" != 0 ]; then
     CMD echo "======> Installing dependencies (scripts/random-root-password.sh)... <======"
+    PKG --update
     PKG pwgen
 
     CMD /scripts/random-root-password.sh "${mariadb_root_host}"
