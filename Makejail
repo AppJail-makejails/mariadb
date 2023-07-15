@@ -86,6 +86,9 @@ RAW elif [ "${mariadb_random_root_password}" != 0 ]; then
     PKG pwgen
 
     CMD /scripts/random-root-password.sh "${mariadb_root_host}"
+
+    # pwgen is no longer required.
+    PKG --remove pwgen
 RAW fi
 
 CMD if [ -f "/scripts/mysqlrc" ]; then \
@@ -93,11 +96,6 @@ CMD if [ -f "/scripts/mysqlrc" ]; then \
     fi
 
 CMD rm -rf /scripts
-
-# pwgen is no longer required.
-RAW if [ "${mariadb_random_root_password}" != 0 ]; then
-    PKG --remove pwgen
-RAW fi
 
 STAGE custom:mariadb_mysql_secure_installation
 
