@@ -112,9 +112,9 @@ appjail image export mariadb
 
 | Tag         | Arch    | Version           | Type   | `mariadb_version` |
 | ----------- | ------- | ----------------- | ------ | ----------------- |
-| `13.2-1011` | `amd64` | `13.2-RELEASE-p1` | `thin` |       1011        |
-| `13.2-106`  | `amd64` | `13.2-RELEASE-p1` | `thin` |       106         |
-| `13.2-105`  | `amd64` | `13.2-RELEASE-p1` | `thin` |       105         |
+| `13.2-1011` | `amd64` | `13.2-RELEASE-p2` | `thin` |       1011        |
+| `13.2-106`  | `amd64` | `13.2-RELEASE-p2` | `thin` |       106         |
+| `13.2-105`  | `amd64` | `13.2-RELEASE-p2` | `thin` |       105         |
 
 ## Notes
 
