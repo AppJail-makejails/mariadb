@@ -115,9 +115,6 @@ appjail image export mariadb
 | `13.2-1011` | `amd64` | `13.2-RELEASE-p1` | `thin` |       1011        |
 | `13.2-106`  | `amd64` | `13.2-RELEASE-p1` | `thin` |       106         |
 | `13.2-105`  | `amd64` | `13.2-RELEASE-p1` | `thin` |       105         |
-| `13.1-1011` | `amd64` | `13.1-RELEASE-p8` | `thin` |       1011        |
-| `13.1-106`  | `amd64` | `13.1-RELEASE-p8` | `thin` |       106         |
-| `13.1-105`  | `amd64` | `13.1-RELEASE-p8` | `thin` |       105         |
 
 ## Notes
 
