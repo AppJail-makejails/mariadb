@@ -35,67 +35,73 @@ CMD if [ -f "/usr/local/etc/mysql/conf.d/server.cnf" ]; then \
 SYSRC mysql_enable=YES
 SERVICE mysql-server start
 
-CMD echo "======> Installing scripts ... <======"
-COPY --verbose scripts
+RAW if appjail cmd jexec "${APPJAIL_JAILNAME}" [ -d "/.mariadb-done" ]; then
+    CMD echo "======> Installation appears to have a MariaDB already configured, the scripts will not run. <======"
+RAW else
+    CMD echo "======> Installing scripts ... <======"
+    COPY --verbose scripts
 
-RAW if [ "${mariadb_remove_anonymous_users}" != 0 ]; then
-    CMD /scripts/remove-anonymous-users.sh
-RAW fi
+    RAW if [ "${mariadb_remove_anonymous_users}" != 0 ]; then
+        CMD /scripts/remove-anonymous-users.sh
+    RAW fi
 
-RAW if [ "${mariadb_disallow_root_login_remotely}" != 0 ]; then
-    CMD /scripts/disallow-root-login-remotely.sh
-RAW fi
+    RAW if [ "${mariadb_disallow_root_login_remotely}" != 0 ]; then
+        CMD /scripts/disallow-root-login-remotely.sh
+    RAW fi
 
-RAW if [ "${mariadb_remove_test_database}" != 0 ]; then
-    CMD /scripts/remove-test-database.sh
-RAW fi
+    RAW if [ "${mariadb_remove_test_database}" != 0 ]; then
+        CMD /scripts/remove-test-database.sh
+    RAW fi
 
-RAW if [ "${mariadb_remove_anonymous_users}" != 0 \
-            -o "${mariadb_disallow_root_login_remotely}" != 0 \
-            -o "${mariadb_remove_test_database}" != 0 ]; then
-        CMD /scripts/flush-privileges.sh
-RAW fi
-
-RAW if [ -n "${mariadb_database}" ]; then
-    CMD /scripts/create-database.sh "${mariadb_database}"
-RAW fi
-
-RAW if [ -n "${mariadb_user}" ] && [ -n "${mariadb_password_hash}" -o -n "${mariadb_password}" ]; then
-    RAW if [ -n "${mariadb_password_hash}" ]; then
-        CMD /scripts/password-hash.sh "${mariadb_user}" "${mariadb_password_hash}"
-    RAW elif [ -n "${mariadb_password}" ]; then
-        CMD /scripts/password.sh "${mariadb_user}" "${mariadb_password}"
+    RAW if [ "${mariadb_remove_anonymous_users}" != 0 \
+                -o "${mariadb_disallow_root_login_remotely}" != 0 \
+                -o "${mariadb_remove_test_database}" != 0 ]; then
+            CMD /scripts/flush-privileges.sh
     RAW fi
 
     RAW if [ -n "${mariadb_database}" ]; then
-        CMD /scripts/grant-user.sh "${mariadb_user}" "${mariadb_database}"
+        CMD /scripts/create-database.sh "${mariadb_database}"
     RAW fi
-RAW elif [ -n "${mariadb_user}" ]; then
-    CMD printf "%s\n" "--mariadb_user cannot be used when --mariadb_password_hash or --mariadb_password are not defined." >&2
-    RAW exit 1
+
+    RAW if [ -n "${mariadb_user}" ] && [ -n "${mariadb_password_hash}" -o -n "${mariadb_password}" ]; then
+        RAW if [ -n "${mariadb_password_hash}" ]; then
+            CMD /scripts/password-hash.sh "${mariadb_user}" "${mariadb_password_hash}"
+        RAW elif [ -n "${mariadb_password}" ]; then
+            CMD /scripts/password.sh "${mariadb_user}" "${mariadb_password}"
+        RAW fi
+
+        RAW if [ -n "${mariadb_database}" ]; then
+            CMD /scripts/grant-user.sh "${mariadb_user}" "${mariadb_database}"
+        RAW fi
+    RAW elif [ -n "${mariadb_user}" ]; then
+        CMD printf "%s\n" "--mariadb_user cannot be used when --mariadb_password_hash or --mariadb_password are not defined." >&2
+        RAW exit 1
+    RAW fi
+
+    RAW if [ "${mariadb_allow_empty_root_password}" != 0 ]; then
+        CMD /scripts/allow-empty-root-password.sh "${mariadb_root_host}"
+    RAW elif [ -n "${mariadb_root_password_hash}" ]; then
+        CMD /scripts/root-password-hash.sh "${mariadb_root_password_hash}" "${mariadb_root_host}"
+    RAW elif [ -n "${mariadb_root_password}" ]; then
+        CMD /scripts/root-password.sh "${mariadb_root_password}" "${mariadb_root_host}"
+    RAW elif [ "${mariadb_random_root_password}" != 0 ]; then
+        CMD echo "======> Installing dependencies (scripts/random-root-password.sh)... <======"
+        PKG pwgen
+
+        CMD /scripts/random-root-password.sh "${mariadb_root_host}"
+
+        # pwgen is no longer required.
+        PKG --remove pwgen
+    RAW fi
+
+    CMD if [ -f "/scripts/mysqlrc" ]; then \
+            mysql < /scripts/mysqlrc; \
+        fi
+
+    CMD rm -rf /scripts
+    
+    CMD mkdir -p "/.mariadb-done"
 RAW fi
-
-RAW if [ "${mariadb_allow_empty_root_password}" != 0 ]; then
-    CMD /scripts/allow-empty-root-password.sh "${mariadb_root_host}"
-RAW elif [ -n "${mariadb_root_password_hash}" ]; then
-    CMD /scripts/root-password-hash.sh "${mariadb_root_password_hash}" "${mariadb_root_host}"
-RAW elif [ -n "${mariadb_root_password}" ]; then
-    CMD /scripts/root-password.sh "${mariadb_root_password}" "${mariadb_root_host}"
-RAW elif [ "${mariadb_random_root_password}" != 0 ]; then
-    CMD echo "======> Installing dependencies (scripts/random-root-password.sh)... <======"
-    PKG pwgen
-
-    CMD /scripts/random-root-password.sh "${mariadb_root_host}"
-
-    # pwgen is no longer required.
-    PKG --remove pwgen
-RAW fi
-
-CMD if [ -f "/scripts/mysqlrc" ]; then \
-        mysql < /scripts/mysqlrc; \
-    fi
-
-CMD rm -rf /scripts
 
 STAGE custom:mariadb_mysql_secure_installation
 

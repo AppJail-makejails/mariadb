@@ -120,3 +120,4 @@ appjail image export mariadb
 
 1. The `mariadb_dump_all` custom stage uses `-ARE --single-transaction` flags. See the `mysqldump` / `mariadb-dump` documentation to see if these flags suit your environment and/or configuration.
 2. `bind-address` is set to `0.0.0.0`.
+3. This Makejail assumes a new installation for each run, if you want to not run the scripts that configure MariaDB, mount an empty directory to `/.mariadb-done`.
