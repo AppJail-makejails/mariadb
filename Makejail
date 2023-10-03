@@ -35,7 +35,7 @@ CMD if [ -f "/usr/local/etc/mysql/conf.d/server.cnf" ]; then \
 SYSRC mysql_enable=YES
 SERVICE mysql-server start
 
-RAW if appjail cmd jexec "${APPJAIL_JAILNAME}" [ -d "/.mariadb-done" ]; then
+RAW if appjail cmd jexec "${APPJAIL_JAILNAME}" [ -f "/.mariadb-done/skip-scripts" ]; then
     CMD echo "======> Installation appears to have a MariaDB already configured, the scripts will not run. <======"
 RAW else
     CMD echo "======> Installing scripts ... <======"
@@ -101,6 +101,7 @@ RAW else
     CMD rm -rf /scripts
     
     CMD mkdir -p "/.mariadb-done"
+    CMD touch "/.mariadb-done/skip-scripts"
 RAW fi
 
 STAGE custom:mariadb_mysql_secure_installation
