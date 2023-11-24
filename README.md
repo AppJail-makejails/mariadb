@@ -110,11 +110,11 @@ appjail image export mariadb
 
 ## Tags
 
-| Tag         | Arch    | Version           | Type   | `mariadb_version` |
-| ----------- | ------- | ----------------- | ------ | ----------------- |
-| `13.2-1011` | `amd64` | `13.2-RELEASE` | `thin` |       1011        |
-| `13.2-106`  | `amd64` | `13.2-RELEASE` | `thin` |       106         |
-| `13.2-105`  | `amd64` | `13.2-RELEASE` | `thin` |       105         |
+| Tag         | Arch    | Version        | Type   | `mariadb_version` |
+| ----------- | ------- | -------------- | ------ | ----------------- |
+| `13.2-1011` | `amd64` | `13.2-RELEASE` | `thin` |      `1011`       |
+| `13.2-106`  | `amd64` | `13.2-RELEASE` | `thin` |      `106`        |
+| `13.2-105`  | `amd64` | `13.2-RELEASE` | `thin` |      `105`        |
 
 ## Notes
 
