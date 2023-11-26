@@ -78,36 +78,6 @@ appjail run -s mariadb_mysql_secure_installation mariadb
 * `mariadb_disallow_root_login_remotely` (default: `1`): Normally, root should only be allowed to connect from 'localhost'.  This ensures that someone cannot guess at the root password from the network. You should also set `--mariadb_root_host`.
 * `mariadb_remove_test_database` (default: `1`): By default, MariaDB comes with a database named 'test' that anyone can access.  This is also intended only for testing, and should be removed before moving into a production environment.
 
-## How to build the Image
-
-Make any changes you want to your image.
-
-```
-INCLUDE options/network.makejail
-INCLUDE gh+AppJail-makejails/mariadb --file build.makejail
-```
-
-Build the jail:
-
-```sh
-appjail makejail -j mariadb -- --mariadb_version 106
-```
-
-Remove unportable or unnecessary files and directories and export the jail:
-
-```sh
-appjail stop mariadb
-appjail cmd local mariadb sh -c "rm -f var/log/*"
-appjail cmd local mariadb sh -c "rm -f var/cache/pkg/*"
-appjail cmd local mariadb sh -c "rm -f var/run/*"
-appjail cmd local mariadb vi etc/rc.conf
-appjail image export mariadb
-```
-
-### Arguments
-
-* `mariadb_version` (default: `1011`): MariaDB server version. Valid values: 105, 106, 1011.
-
 ## Tags
 
 | Tag         | Arch    | Version        | Type   | `mariadb_version` |
