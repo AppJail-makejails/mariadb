@@ -1,0 +1,2 @@
+OPTION volume=mariadb-db mountpoint:/var/db/mysql owner:88 group:88
+OPTION volume=mariadb-done mountpoint:/.mariadb-done
