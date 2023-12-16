@@ -78,6 +78,13 @@ appjail run -s mariadb_mysql_secure_installation mariadb
 * `mariadb_disallow_root_login_remotely` (default: `1`): Normally, root should only be allowed to connect from 'localhost'.  This ensures that someone cannot guess at the root password from the network. You should also set `--mariadb_root_host`.
 * `mariadb_remove_test_database` (default: `1`): By default, MariaDB comes with a database named 'test' that anyone can access.  This is also intended only for testing, and should be removed before moving into a production environment.
 
+### Volumes
+
+| Name         | Owner | Group | Perm | Type | Mountpoint     |
+| ------------ | ----- | ----- | ---- | ---- | -------------- |
+| mariadb-db   | 88    | 88    |  -   |  -   | /var/db/mysql  |
+| mariadb-done |  -    |  -    |  -   |  -   | /.mariadb-done |
+
 ## Tags
 
 | Tag         | Arch    | Version        | Type   | `mariadb_version` |
