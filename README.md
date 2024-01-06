@@ -1,4 +1,4 @@
-# mariadb
+# MariaDB
 
 MariaDB is a database server that offers drop-in replacement functionality for MySQL. MariaDB is built by some of the original authors of MySQL, with assistance from the broader community of Free and open source software developers. In addition to the core functionality of MySQL, MariaDB offers a rich set of feature enhancements including alternate storage engines, server optimizations, and patches.
 
