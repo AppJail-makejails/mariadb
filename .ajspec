@@ -46,3 +46,5 @@ tags+: 14.0-105
 14.0-105.size.amd64: 142594885
 14.0-105.source.amd64: "http://appjail.hpc.at/mariadb/14.0-105-amd64-image.appjail"
 14.0-105.source.amd64+: "https://images.all101bsd.download/mariadb/14.0-105-amd64-image.appjail"
+entrypoint: "gh+AppJail-makejails/mariadb"
+ajspec: ".ajspec"
