@@ -1,10 +1,10 @@
 INCLUDE options/options.makejail
 INCLUDE options/volumes.makejail
 
-ARG mariadb_version=1011
+ARG mariadb_version=114
 
-RAW if ! echo "${mariadb_version}" | grep -qEe '^10([5-6]|11)$'; then
-RAW 	echo "VALID VERSIONS: 105, 106, 1011"
+RAW if ! echo "${mariadb_version}" | grep -qEe '^1(05|06|011|14)$'; then
+RAW 	echo "VALID VERSIONS: 105, 106, 1011, 114"
 RAW 	exit 1
 RAW fi
 
