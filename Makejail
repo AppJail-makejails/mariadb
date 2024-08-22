@@ -23,7 +23,7 @@ ARG mariadb_disallow_root_login_remotely=1
 ARG mariadb_remove_test_database=1
 
 # Tag
-ARG mariadb_tag=13.3-1011
+ARG mariadb_tag=13.3-114
 
 FROM --entrypoint gh+AppJail-makejails/mariadb mariadb:${mariadb_tag}
 
