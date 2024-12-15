@@ -3,9 +3,9 @@ INCLUDE options/volumes.makejail
 
 ARG mariadb_version=114
 
-RAW if ! echo "${mariadb_version}" | grep -qEe '^1(05|06|011|14)$'; then
-RAW 	echo "VALID VERSIONS: 105, 106, 1011, 114"
-RAW 	exit 1
-RAW fi
+RAW case "${mariadb_version}" in
+RAW     105|106|1011|114) ;;
+RAW     *) echo "VALID VERSIONS: 105, 106, 1011, 114"; exit 1 ;;
+RAW esac
 
 PKG mariadb${mariadb_version}-server
