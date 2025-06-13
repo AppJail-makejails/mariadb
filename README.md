@@ -94,10 +94,10 @@ appjail run -s mariadb_mysql_secure_installation mariadb
 | `13.5-1011` | `amd64` | `13.5-RELEASE` | `thin` |      `1011`       |
 | `13.5-106`  | `amd64` | `13.5-RELEASE` | `thin` |      `106`        |
 | `13.5-105`  | `amd64` | `13.5-RELEASE` | `thin` |      `105`        |
-| `14.2-114`  | `amd64` | `14.2-RELEASE` | `thin` |      `114`       |
-| `14.2-1011` | `amd64` | `14.2-RELEASE` | `thin` |      `1011`       |
-| `14.2-106`  | `amd64` | `14.2-RELEASE` | `thin` |      `106`        |
-| `14.2-105`  | `amd64` | `14.2-RELEASE` | `thin` |      `105`        |
+| `14.3-114`  | `amd64` | `14.3-RELEASE` | `thin` |      `114`       |
+| `14.3-1011` | `amd64` | `14.3-RELEASE` | `thin` |      `1011`       |
+| `14.3-106`  | `amd64` | `14.3-RELEASE` | `thin` |      `106`        |
+| `14.3-105`  | `amd64` | `14.3-RELEASE` | `thin` |      `105`        |
 
 ## Notes
 
