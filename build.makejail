@@ -1,11 +1,11 @@
 INCLUDE options/options.makejail
 INCLUDE options/volumes.makejail
 
-ARG mariadb_version=114
+ARG mariadb_version=118
 
 RAW case "${mariadb_version}" in
-RAW     105|106|1011|114) ;;
-RAW     *) echo "VALID VERSIONS: 105, 106, 1011, 114"; exit 1 ;;
+RAW     106|1011|114|118) ;;
+RAW     *) echo "VALID VERSIONS: 106, 1011, 114, 118"; exit 1 ;;
 RAW esac
 
 PKG mariadb${mariadb_version}-server
