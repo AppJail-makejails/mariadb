@@ -26,7 +26,7 @@ ARG mariadb_remove_test_database=1
 ARG mariadb_ajspec=gh+AppJail-makejails/mariadb
 
 # Tag
-ARG mariadb_tag=13.5-118
+ARG mariadb_tag=14.3-118
 
 FROM --entrypoint "${mariadb_ajspec}" mariadb:${mariadb_tag}
 

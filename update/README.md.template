@@ -94,10 +94,10 @@ appjail run -s mariadb_mysql_secure_installation mariadb
 | `%%TAG1%%-%%MARIADB3%%` | `amd64` | `%%TAG1%%-RELEASE` | `thin` |      `%%MARIADB3%%`       |
 | `%%TAG1%%-%%MARIADB2%%`  | `amd64` | `%%TAG1%%-RELEASE` | `thin` |      `%%MARIADB2%%`        |
 | `%%TAG1%%-%%MARIADB1%%`  | `amd64` | `%%TAG1%%-RELEASE` | `thin` |      `%%MARIADB1%%`        |
-| `%%TAG2%%-%%MARIADB4%%`  | `amd64` | `%%TAG2%%-RELEASE` | `thin` |      `%%MARIADB4%%`       |
-| `%%TAG2%%-%%MARIADB3%%` | `amd64` | `%%TAG2%%-RELEASE` | `thin` |      `%%MARIADB3%%`       |
-| `%%TAG2%%-%%MARIADB2%%`  | `amd64` | `%%TAG2%%-RELEASE` | `thin` |      `%%MARIADB2%%`        |
-| `%%TAG2%%-%%MARIADB1%%`  | `amd64` | `%%TAG2%%-RELEASE` | `thin` |      `%%MARIADB1%%`        |
+| `%%TAG2%%-%%MARIADB4%%`  | `amd64` | `%%TAG2%%` | `thin` |      `%%MARIADB4%%`       |
+| `%%TAG2%%-%%MARIADB3%%` | `amd64` | `%%TAG2%%` | `thin` |      `%%MARIADB3%%`       |
+| `%%TAG2%%-%%MARIADB2%%`  | `amd64` | `%%TAG2%%` | `thin` |      `%%MARIADB2%%`        |
+| `%%TAG2%%-%%MARIADB1%%`  | `amd64` | `%%TAG2%%` | `thin` |      `%%MARIADB1%%`        |
 
 ## Notes
 
