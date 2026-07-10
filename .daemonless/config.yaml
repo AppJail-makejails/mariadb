@@ -1,0 +1,39 @@
+build:
+  variants:
+    - tag: 15.1-106
+      containerfile: Containerfile
+      args:
+        FREEBSD_RELEASE: "15.1"
+        MARIADBVER: "106"
+        NO_PKGCLEAN: "1"
+      cache_dirs: ["pkgcache0:/var/cache/pkg"]
+    - tag: 15.1-1011
+      containerfile: Containerfile
+      args:
+        FREEBSD_RELEASE: "15.1"
+        MARIADBVER: "1011"
+        NO_PKGCLEAN: "1"
+      cache_dirs: ["pkgcache0:/var/cache/pkg"]
+    - tag: 15.1-114
+      containerfile: Containerfile
+      args:
+        FREEBSD_RELEASE: "15.1"
+        MARIADBVER: "114"
+        NO_PKGCLEAN: "1"
+      cache_dirs: ["pkgcache0:/var/cache/pkg"]
+    - tag: 15.1-118
+      containerfile: Containerfile
+      args:
+        FREEBSD_RELEASE: "15.1"
+        MARIADBVER: "118"
+        NO_PKGCLEAN: "1"
+      cache_dirs: ["pkgcache0:/var/cache/pkg"]
+    - tag: 15.1-123
+      containerfile: Containerfile
+      aliases: ["latest"]
+      default: true
+      args:
+        FREEBSD_RELEASE: "15.1"
+        MARIADBVER: "123"
+        NO_PKGCLEAN: "1"
+      cache_dirs: ["pkgcache0:/var/cache/pkg"]
