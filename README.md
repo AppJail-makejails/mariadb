@@ -220,7 +220,7 @@ $ appjail oci run \
     -o virtualnet=":<random> default" \
     -o nat \
     -o ephemeral \
-    ghcr.io/appjail-makejails/mariadb:15.1-106 mariadb-backup \
+    ghcr.io/appjail-makejails/mariadb:15.1-1011 mariadb-backup \
     mariadb-backup --help
 ```
 
@@ -366,13 +366,6 @@ This is documented on [MariaDB Knowledge Base : Adding Plugins to the Docker Off
 ```yaml
 build:
   variants:
-    - tag: 15.1-106
-      containerfile: Containerfile
-      args:
-        FREEBSD_RELEASE: "15.1"
-        MARIADBVER: "106"
-        NO_PKGCLEAN: "1"
-      cache_dirs: ["pkgcache0:/var/cache/pkg"]
     - tag: 15.1-1011
       containerfile: Containerfile
       args:
