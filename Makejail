@@ -1,0 +1,5 @@
+ARG mariadb_from=ghcr.io/appjail-makejails/mariadb
+ARG mariadb_tag=latest
+
+OPTION overwrite=force
+OPTION from=${mariadb_from}:${mariadb_tag}
