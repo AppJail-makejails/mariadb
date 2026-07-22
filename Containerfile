@@ -26,8 +26,9 @@ RUN set -xe; \
     \
     if [ -z "${NO_PKGCLEAN}" ]; then \
         pkg clean -a; \
-        rm -rf /var/cache/pkg/* /var/db/pkg/repos/*; \
+        rm -rf /var/cache/pkg/*; \
     fi; \
+    rm -rf /var/db/pkg/repos/*; \
     \
     find /usr/local/etc/mysql/ -name '*.cnf' -print0 \
 		| xargs -0 ggrep -lZE '^(bind-address|log|user\s)' \
