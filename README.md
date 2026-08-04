@@ -83,7 +83,7 @@ services:
       environment:
         - MARIADB_ROOT_PASSWORD: example
     options:
-      - container: 'boot args:--pull'
+      - container: 'args:--pull'
 
   phpmyadmin:
     name: phpmyadmin
@@ -93,7 +93,7 @@ services:
         - PMA_ARBITRARY: 1
     options:
       - expose: '8080:80'
-      - container: 'boot args:--pull'
+      - container: 'args:--pull'
 ```
 
 Run `appjail-director up`, wait for it to initialize completely, and visit `http://phpmyadmin/` or `http://host-ip:8080` (as appropriate).
