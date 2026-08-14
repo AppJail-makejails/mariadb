@@ -15,7 +15,7 @@ LABEL org.opencontainers.image.title="MariaDB" \
 RUN set -xe; \
     \
     pkg update; \
-    pkg install -U mariadb${MARIADBVER}-server \
+    pkg install mariadb${MARIADBVER}-server \
         pwgen \
         bash \
         coreutils \
