@@ -300,6 +300,19 @@ There is a large list of environment variables and the complete list is document
 
 When this environment variable is set, this will run the [mariadb-upgrade](https://mariadb.com/kb/en/mariadb-upgrade/), if needed, so any changes in the MariaDB system tables required to expose new features will be made. This may impeed some [downgrade options](https://mariadb.com/kb/en/downgrading-between-major-versions-of-mariadb/). Unless the environment variable `MARIADB_DISABLE_UPGRADE_BACKUP` is set, there will be a backup of the system tables created as `system_mysql_backup_*.sql.zst` in the top level of the data directory to assist in the downgrade if needed.
 
+### Secrets
+
+As an alternative to passing sensitive information via environment variables, `_FILE` may be appended to the previously listed environment variables, causing the initialization script to load the values for those variables from files present in the container. In particular, this can be used to load passwords from [AppJail secrets](https://appjail.readthedocs.io/en/latest/secrets/) stored in `/secrets/<group_name>/<secret_name>` files. For example:
+
+```console
+$ appjail oci run -Pd \
+    -o overwrite=force \
+    -o virtualnet=":<random> default" \
+    -o nat \
+    -e MARIADB_ROOT_PASSWORD_FILE=/secrets/mariadb/mariadb-root \
+    ghcr.io/appjail-makejails/mariadb:latest some-mariadb
+```
+
 ### Initializing the database contents
 
 When a container is started for the first time, a new database with the specified name will be created and initialized with the provided configuration variables. Furthermore, it will execute files with extensions `.sh`, `.sql`, `.sql.gz`, `.sql.xz` and `.sql.zst` that are found in `/entrypoint-initdb.d`. Files will be executed in alphabetical order. `.sh` files without file execute permission are sourced rather than executed. You can easily populate your mariadb services by [mounting a SQL dump into that directory](https://appjail.readthedocs.io/en/latest/fs-mgmt/) and provide [custom images](https://man.freebsd.org/cgi/man.cgi?query=Containerfile) with contributed data. SQL files will be imported by default to the database specified by the `MARIADB_DATABASE` variable.
@@ -354,6 +367,7 @@ This is documented on [MariaDB Knowledge Base : Adding Plugins to the Docker Off
 
 * `PGID` (default: `1000`): Equivalent to `PUID` but for the Process Group ID.
 * `PUID` (default: `1000`): Process User ID for the container's main process, allowing you to match the owner of files written to mounted host volumes to your host system's user. Writable volumes are changed based on this environment variable.
+* `UMASK` (default: `0022`): Override default umask setting.
 
 ### Volumes
 
