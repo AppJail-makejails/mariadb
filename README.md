@@ -309,6 +309,7 @@ $ appjail oci run -Pd \
     -o overwrite=force \
     -o virtualnet=":<random> default" \
     -o nat \
+    -o secret=mariadb \
     -e MARIADB_ROOT_PASSWORD_FILE=/secrets/mariadb/mariadb-root \
     ghcr.io/appjail-makejails/mariadb:latest some-mariadb
 ```
